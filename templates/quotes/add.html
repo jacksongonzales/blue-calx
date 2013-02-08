@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<h1>Add a quote, fool.</h1>
+<form action="/quotes/newquote/" method="post">
+<!-- here -->
+{% csrf_token %}
+
+{{ form.as_p }}
+<input type="submit" value="Add" />
+</form>

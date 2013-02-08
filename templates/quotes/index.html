@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>QuoteBoard</title>
+	</head>
+	<body>
+		<h1 style="font-family: Helvetica">QuoteBoard</h1>
+
+	<script type="text/javascript">
+     	window.onload = startInterval;
+    	function startInterval()
+    	{
+        	setInterval("startTime();",10000);
+    	}
+    
+    	function startTime()
+    	{
+       	window.location = location.href;
+    	}
+  	</script>
+
+	<p style="">{{quote.text}}</p>
+	<p style="text-indent:150px; font-size:10px; font-family: Helvetica">
+	-<em>{{quote.attribution}}</em></p>
+
+		<div align="left">
+			<FORM METHOD="LINK" ACTION="http://127.0.0.1:8000/quotes/newquote/">
+			<INPUT TYPE="submit" VALUE="Add a quote"> 
+			</FORM>
+		</div>
+	</body>
+</html>
