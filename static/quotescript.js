@@ -1,13 +1,13 @@
 $(function() {
 
-var int=self.setInterval(function(){refreshQuote()},15000);
+var int=self.setInterval(function(){refreshQuote()},5000);
 var refreshQuote = function(){
 	$.ajax({
 		url: "/quotes/randquo/",
 		success: function(jsondata){
 			var text = jsondata[0].fields.text, 
 			who = jsondata[0].fields.who_said_it;
-			$("#quotebox").fadeOut('slow').fadeIn('slow');
+			$("#quotebox").fadeOut('slow').fadeIn(1500);
 			$("#words").fadeOut('slow', function() {
 				$(this).text(text).fadeIn("slow");
 			});
