@@ -1,4 +1,7 @@
 # Django settings for QuoteBoard project.
+import os # heroku thing
+gettext = lambda s: s
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__)) #for heroku
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -47,6 +50,7 @@ USE_TZ = True
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = ''
 
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
@@ -68,7 +72,9 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/jacksongonzales/projects/QuoteBoard/static/',
+#     '/Users/jacksongonzales/projects/QuoteBoard/static/',
+ 	os.path.join(PROJECT_PATH, 'static'),
+    
 )
 
 # List of finder classes that know how to find static files in
@@ -105,8 +111,9 @@ ROOT_URLCONF = 'QuoteBoard.urls'
 WSGI_APPLICATION = 'QuoteBoard.wsgi.application'
 
 TEMPLATE_DIRS = (
-	'/Users/jacksongonzales/projects/QuoteBoard/templates/',
-	#'/Users/jacksongonzales/projects/QuoteBoard/templates/quotes/'
+	os.path.join(PROJECT_PATH, 'templates'), # for heroku
+	
+# 	'/Users/jacksongonzales/projects/QuoteBoard/templates/', #for local use	
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -155,8 +162,8 @@ LOGGING = {
 }
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

@@ -5,6 +5,7 @@ from django.utils import simplejson
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template.response import TemplateResponse # Look into this thing
 from quotes.models import Quote, QuoteForm
+import json
 
 def randomizer():
 	random_idx = random.randint(0, Quote.objects.count() - 1)
@@ -36,10 +37,12 @@ def thanks(request):
 	 return TemplateResponse(request, 'quotes/thanks.html')
 	 
 def random_quote(request):
-	#test if ajax request
-	response = randomizer()
-	jsondata = serializers.serialize("json", [response]) #why need square brackets?
-# 	jsondata = simplejson.dumps(response.__dict__)
-	print jsondata
-	return HttpResponse(jsondata, mimetype='application/json') #is mimetype necessary?
-	
+
+	if request.is_ajax():
+		quote = randomizer()
+		return HttpResponse(json.dumps({
+			"text": quote.text,
+			"who_said_it": quote.who_said_it,
+		}), content_type='application/json')
+	else:
+		return HttpResponse ('Screw off')
