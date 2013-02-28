@@ -23,7 +23,7 @@ def add(request):
 		form = QuoteForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/quotes/gratitude/')
+			return HttpResponseRedirect('/gratitude/')
 	
 	else:
 		form = QuoteForm()
