@@ -38,75 +38,33 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-<<<<<<< HEAD
-          <a class="brand" href="/">QuoteBoard</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="/newquote">Create</a></li>
-              <li><a href="/admin">Admin</a></li>
-=======
           <a class="brand" href="http://quotepalooza.herokuapp.com/">QuoteBoard</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="http://quotepalooza.herokuapp.com/newquote/">Create</a></li>
               <li><a href="http://quotepalooza.herokuapp.com/admin/">Admin</a></li>
               <!--              <li><a href="#contact">Contact</a></li> -->
->>>>>>> 3fc224437df8646037848cb845346f5c5013d741
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-    <div id="wrap" class="container" align="center">
+    <div class="container">
 
 		<h1>Add a Quote, Guy!</h1>
-<<<<<<< HEAD
-		<form id="quoteform" action="/newquote/" method="post">
-=======
-		<form action="http://quotepalooza.herokuapp.com/newquote/" method="post">	
->>>>>>> 3fc224437df8646037848cb845346f5c5013d741
+		<form action="http://quotepalooza.herokuapp.com/newquote/" method="post">
 			{% csrf_token %}
 			{{ form.as_p }}
-      <button class="btn" type="submit"><i class="icon-plus-sign"></i> Add</button>
-    </form>
-
-      <div id='doit'>
-        <h1 id='command'>I'm begging you.</h1>
-      </div>
-
-    <div id="successModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Bazam!</h3>
-      </div>
-      <div class="modal-body">
-      <p>Would you like to add another quote? Click no to return to the QuoteBoard.</p>
-      </div>
-      <div class="modal-footer">
-        <a class="btn btn" href="/newquote"><i class="icon-thumbs-up icon"></i> Yes</a>
-        <a class="btn btn" href="/"><i class="icon-thumbs-down icon"></i> No</a>
-      </div>
-    </div>
+			<button class="btn" type="submit"><i class="icon-plus-sign"></i> Add</button>
+		</form>
 
     </div> <!-- /container -->
 
-    <div id="push" class="bottom-bar"></div>
-
-    <div class="container" id="footer">
-      <div>
-        <p id="grey" class="right"><i class="icon-leaf"></i> Vegan. Organic.</p>
-        <ul id='ulfoot'>
-          <li><p id="grey">Site built by Jackson Flint-Gonzales. Powered by Twitter Bootstrap.</p></li>
-        </ul> 
-      </div>
-    </div>
-      
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="{{STATIC_URL}}jquery-validate.js"></script>
     <script src="{{STATIC_URL}}bootstrap/js/bootstrap-transition.js"></script>
     <script src="{{STATIC_URL}}bootstrap/js/bootstrap-alert.js"></script>
     <script src="{{STATIC_URL}}bootstrap/js/bootstrap-modal.js"></script>
@@ -119,25 +77,6 @@
     <script src="{{STATIC_URL}}bootstrap/js/bootstrap-collapse.js"></script>
     <script src="{{STATIC_URL}}bootstrap/js/bootstrap-carousel.js"></script>
     <script src="{{STATIC_URL}}bootstrap/js/bootstrap-typeahead.js"></script>
-    <script src="{{STATIC_URL}}addscript.js"></script>  
-    {% load jquery_validation %}
-    {% include_validation %}
-    <script type="text/javascript">
-    $(function(){
-          $('form').validate('{% url quote_form_validate %}',
-                           {
-                             type: ['p'],
-                             submitHandler: function(e){
-                              // console.log(this, $(this).attr('action'), $(this).serialize());
 
-                               $.post($(this).attr('action'), $(this).serialize(), function(data){
-                                 $("#successModal").modal('show'); 
-                                 $('form').find("input[name=who_said_it]").val('');
-                                 $('form').find("textarea[name=text]").val('');
-                               }, 'json');
-                               return false;
-                             }
-                           }); 
-    });
-    </script>
+  
 </body></html>
