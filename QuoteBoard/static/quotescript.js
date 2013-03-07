@@ -1,6 +1,6 @@
 $(function() {
 
-var int=self.setInterval(function(){refreshQuote()},5000);
+var int=self.setInterval(function(){refreshQuote()},15000);
 var refreshQuote = function(){
 	$.ajax({
 		url: "/quotes/randquo/",
@@ -17,9 +17,10 @@ var refreshQuote = function(){
 			});
 		}
 	});
-}
+};
 
 });
+
 
 
 

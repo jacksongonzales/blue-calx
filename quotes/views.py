@@ -19,19 +19,21 @@ def index(request):
 	})
     
 def add(request):
-	if request.method == 'POST':
-		form = QuoteForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect('/gratitude/')
-	
-	else:
-		form = QuoteForm()
+    if request.method == 'POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+#			return TemplateResponse(request, 'quotes/add.html')
+            if request.is_ajax():
+                return HttpResponse('{"success":true}', content_type="application/json")
+            else:
+                return HttpResponseRedirect('/gratitude/')
+    else:
+        form = QuoteForm()
 		
-	return TemplateResponse(request, 'quotes/add.html', {
-		'form': form,
-		
-	})
+    return TemplateResponse(request, 'quotes/add.html', {
+        'form': form,
+    })
 	
 def thanks(request):
 	 return TemplateResponse(request, 'quotes/thanks.html')
