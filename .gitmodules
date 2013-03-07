@@ -1,0 +1,3 @@
+[submodule "django-ajax-validation"]
+	path = django-ajax-validation
+	url = https://github.com/alex/django-ajax-validation.git
